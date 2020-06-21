@@ -1,0 +1,22 @@
+{
+  "name": "hello-world-npm",
+  "version": "1.0.0",
+  "description": "npm test",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/martincandal/hello-world-npm.git"
+  },
+  "author": "mcandal",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/martincandal/hello-world-npm/issues"
+  },
+  "homepage": "https://github.com/martincandal/hello-world-npm#readme",
+  "dependencies": {
+    "http": "0.0.1-security"
+  }
+}
