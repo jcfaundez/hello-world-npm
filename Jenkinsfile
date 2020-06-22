@@ -54,11 +54,13 @@ pipeline {
         }
         stage('Stop Current Container'){
             steps{
+                echo "Stop de container actual"
                 sh "sudo docker stop $(sudo docker ps |grep  hello-world-npm | awk '{print $1}')"
             }
         }
         stage ('Deploy Image'){
             steps{
+                echo "Deploy de imagen"
                 sh "sudo docker run -p 8090:8090 -d hello-world-npm:${tag}"
             }
         }
