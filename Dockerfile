@@ -1,3 +1,4 @@
+ARG IMG_VERSION
 FROM node:12
 # Create app directory
 WORKDIR /usr/src/app
