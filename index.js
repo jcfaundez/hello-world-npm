@@ -6,7 +6,7 @@ var httpServer = http.createServer(function (req, resp) {
 
     resp.writeHeader(200);
 
-    resp.end('This is a NodeJs Server version '+ process.env.IMG_VERSION);
+    resp.end('This is a NodeJs Server. Docker Image version: '+ process.env.IMG_VERSION);
 });
 
 // Http server listen on port 8888.
