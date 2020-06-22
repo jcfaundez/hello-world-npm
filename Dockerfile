@@ -1,6 +1,4 @@
-ARG IMG=1
 FROM node:12
-ENV IMG_VERSION=$IMG
 # Create app directory
 WORKDIR /usr/src/app
 

@@ -57,7 +57,7 @@ pipeline {
         stage('Build Image'){
             steps{
                 echo "Creo imagen docker hello-world-npm:${tag}"
-                sh "sudo docker build --build-arg IMG=hello-world-npm:${tag} -t hello-world-npm:${tag} ."
+                sh "sudo docker build -t hello-world-npm:${tag} ."
             }
         }
         stage('Stop Current Container'){
@@ -69,7 +69,7 @@ pipeline {
         stage ('Deploy Image'){
             steps{
                 echo "Deploy de imagen"
-                sh "sudo docker run -p 8090:8090 -d hello-world-npm:${tag}"
+                sh "sudo docker run -p 8090:8090 -d -e  IMG_VERSION=hello-world-npm:${tag} hello-world-npm:${tag}"
             }
         }
     }
