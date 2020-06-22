@@ -49,7 +49,7 @@ pipeline {
         stage('Build Image'){
             steps{
                 echo "TAG: ${tag}"
-                sh "sudo docker build -t ${BUILD_NUMBER}/hello-world-npm ."
+                sh "sudo docker build -t hello-world-npm:${BUILD_NUMBER} ."
             }
         }
 
