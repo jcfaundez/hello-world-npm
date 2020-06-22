@@ -57,7 +57,7 @@ pipeline {
         stage('Build Image'){
             steps{
                 echo "TAG: ${tag}"
-                sh "sudo docker build -t hello-world-npm:${tag} ."
+                sh "sudo docker build --build-arg IMG_VERSION=hello-world-npm:${tag} -t hello-world-npm:${tag} ."
             }
         }
         stage('Stop Current Container'){
