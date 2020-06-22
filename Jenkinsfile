@@ -1,6 +1,7 @@
 pipeline {
     agent {label 'npm'}
     stages {
+        tag = ''
         stage('Build') {
             steps {
                 echo 'Running npm build'
@@ -44,7 +45,7 @@ pipeline {
             }
         }
 
-        stage ('Build Image'){
+        stage('Build Image'){
             steps{
                 echo "${tag}"
                 sh "sudo docker build -t ${BUILD_NUMBER}/hello-world-npm ."
