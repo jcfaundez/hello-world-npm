@@ -46,6 +46,7 @@ pipeline {
 
         stage ('Build Image'){
             steps{
+                echo "${tag}"
                 sh "sudo docker build -t ${BUILD_NUMBER}/hello-world-npm ."
             }
         }
