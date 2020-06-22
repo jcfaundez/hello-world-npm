@@ -49,20 +49,24 @@ pipeline {
         stage('Build Image'){
             steps{
                 echo "TAG: ${tag}"
-                sh "sudo docker build -t hello-world-npm:${BUILD_NUMBER} ."
+                sh "sudo docker build -t hello-world-npm:${tag} ."
             }
         }
-
+        stage('Stop Current Container'){
+            steps{
+                sh "sudo docker stop $(sudo docker ps |grep  hello-world-npm | awk '{print $1}')"
+            }
+        }
         stage ('Deploy Image'){
             steps{
-                sh "sudo docker run -p 8090:8090 -d hello-world-npm:${BUILD_NUMBER}"
+                sh "sudo docker run -p 8090:8090 -d hello-world-npm:${tag}"
             }
         }
     }
     post {
             always {
                         echo 'Cleaning Workspace...'
-                        cleanWs()
+                        //cleanWs()
                     }
 
         }
