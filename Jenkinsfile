@@ -1,7 +1,7 @@
 pipeline {
     agent {label 'npm'}
     stages {
-        stage('build') {
+        stage('Build') {
             steps {
                 echo 'Running npm build'
                 
@@ -34,7 +34,16 @@ pipeline {
                 
             }
         }
-        
+        stage('Tag'){
+            steps{
+                script{
+                    def tag = input(message: "Ingrese tag", parameters: [string(defaultValue: '', description: 'tag para git e imagen docker', name: 'tag', trim: false)])
+                    echo "${tag}"
+                    
+                }
+            }
+        }
+
         stage ('Build Image'){
             steps{
                 sh "sudo docker build -t ${BUILD_NUMBER}/hello-world-npm ."
