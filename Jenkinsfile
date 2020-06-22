@@ -43,7 +43,7 @@ pipeline {
 
         stage ('Deploy Image'){
             steps{
-                sh "docker run -p 8090:8090 -d ${BUILD_NUMBER}/hello-world-npm"
+                sh "sudo docker run -p 8090:8090 -d ${BUILD_NUMBER}/hello-world-npm"
             }
         }
     }
