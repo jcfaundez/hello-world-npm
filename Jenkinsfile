@@ -34,9 +34,16 @@ pipeline {
                 
             }
         }
+        
         stage ('Build Image'){
             steps{
                 sh "sudo docker build -t ${BUILD_NUMBER}/hello-world-npm ."
+            }
+        }
+
+        stage ('Deploy Image'){
+            steps{
+                sh "docker run -p 8090:8090 -d ${BUILD_NUMBER}/hello-world-npm"
             }
         }
     }
