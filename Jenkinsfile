@@ -8,7 +8,7 @@ pipeline {
                 sh 'npm run build'
             }
         }
-        stage('Test') {
+        stage('SonarQube Test') {
             steps{
                 script{
                     echo 'Sonar Test'
