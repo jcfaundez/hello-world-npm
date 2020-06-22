@@ -1,7 +1,8 @@
+tag = ''
 pipeline {
     agent {label 'npm'}
     stages {
-        tag = ''
+        
         stage('Build') {
             steps {
                 echo 'Running npm build'
