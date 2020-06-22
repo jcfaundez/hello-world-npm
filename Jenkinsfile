@@ -45,7 +45,16 @@ pipeline {
                 }
             }
         }
-
+        stage('Tag Git Repository'){
+            steps{
+                echo "Tag de repositorio GitHub"
+                withCredentials([usernamePassword(credentialsId: 'GitHubCredential', passwordVariable: 'GIT_PWD', usernameVariable: 'GIT_USR')]) {
+                    sh "git tag ${tag}"
+                    sh "git push https://${GIT_USR}:${GIT_PWD}@github.com/martincandal/hello-world-npm.git --tags"
+                }
+                
+            }
+        }
         stage('Build Image'){
             steps{
                 echo "TAG: ${tag}"
