@@ -39,7 +39,7 @@ pipeline {
         stage('Tag'){
             steps{
                 script{
-                    def tag = input(message: "Ingrese tag", parameters: [string(defaultValue: '', description: 'tag para git e imagen docker', name: 'tag', trim: false)])
+                    tag = input(message: "Ingrese tag", parameters: [string(defaultValue: '', description: 'tag para git e imagen docker', name: 'tag', trim: false)])
                     echo "${tag}"
                     
                 }
@@ -55,7 +55,7 @@ pipeline {
 
         stage ('Deploy Image'){
             steps{
-                sh "sudo docker run -p 8090:8090 -d ${BUILD_NUMBER}/hello-world-npm"
+                sh "sudo docker run -p 8090:8090 -d hello-world-npm:${BUILD_NUMBER}"
             }
         }
     }
