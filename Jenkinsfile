@@ -63,7 +63,7 @@ pipeline {
         stage('Stop Current Container'){
             steps{
                 echo "Stop de container actual"
-                //sh 'sudo docker stop $(sudo docker ps |grep  hello-world-npm | awk \'{print $1}\')'
+                sh 'sudo docker stop $(sudo docker ps |grep  hello-world-npm | awk \'{print $1}\')'
             }
         }
         stage ('Deploy Image'){
