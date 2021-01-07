@@ -62,12 +62,14 @@ pipeline {
         }
         stage('Stop Current Container'){
             steps{
+              script {
                 isRunning = sh ( script: 'sudo docker ps |grep  hello-world-npm | awk \'{print $1}\'', returnStdout: true).trim()
                 println "isRunning "+ isRunning
                 if(!isRunning.isEmpty()){
                   echo "Stop de container actual"
                   sh 'sudo docker stop $(sudo docker ps |grep  hello-world-npm | awk \'{print $1}\')'
                 }
+              }
             }
         }
         stage ('Deploy Image'){
