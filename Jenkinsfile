@@ -38,7 +38,7 @@ pipeline {
         stage('Tag'){
             steps{
                 script{
-                    tag = input(message: "Ingrese tag", parameters: [string(defaultValue: '', description: 'tag para git e imagen docker', name: 'tag', trim: false)])
+                    tag = tagProject//input(message: "Ingrese tag", parameters: [string(defaultValue: '', description: 'tag para git e imagen docker', name: 'tag', trim: false)])
                     echo "${tag}"
                     
                 }
