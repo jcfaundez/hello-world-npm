@@ -37,6 +37,11 @@ pipeline {
         }
         stage('Tag'){
             steps{
+                 isRunning = sh (
+    script: 'sudo docker ps |grep  hello-world-npm | awk \'{print $1}\'',
+    returnStdout: true
+).trim()
+println "isRunning "+ isRunning
                 script{
                     tag = tagProject//input(message: "Ingrese tag", parameters: [string(defaultValue: '', description: 'tag para git e imagen docker', name: 'tag', trim: false)])
                     echo "${tag}"
